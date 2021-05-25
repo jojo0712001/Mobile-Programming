@@ -2,9 +2,9 @@ package com.example.mobileprogramming.presentation.api
 
 import com.example.mobileprogramming.presentation.list.Pokemon
 
-data class PokemonResponse(
+data class PokemonListResponse(
     val count:Int,
     val next: String,
-    val result: List<Pokemon>
+    val results: List<Pokemon>
 
 )
