@@ -1,6 +1,5 @@
 package com.example.mobileprogramming.presentation.list
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,22 +11,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobileprogramming.R
 import com.example.mobileprogramming.presentation.Singletons
-import com.example.mobileprogramming.presentation.api.PokemonListResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class PokemonListFragment : Fragment() {
+class CatListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
-    private val adapter = PokemonAdapter(listOf(), ::onClickedPokemon)
-
-    private fun onClickedPokemon(pokemon: Pokemon){
-        findNavController().navigate(R.id.navigateToPokemonDetailFragment)
-    }
-    //7min38 Créer méthode onClickedPokemon
+    private val adapter = CatAdapter(listOf(), ::onClickedCat)
 
     //private val sharedPref : SharedPreferences? = activity?.getSharedPreferences("app", Context.MODE_PRIVATE)
 
@@ -36,53 +29,53 @@ class PokemonListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pokemon_list, container, false)
+        return inflater.inflate(R.layout.fragment_cat_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = view.findViewById(R.id.pokemon_recyclerview)
+        recyclerView = view.findViewById(R.id.cat_recyclerview)
 
 
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = adapter
+            adapter = this@CatListFragment.adapter
         }
-
-
         callApi()
-
     }
 
-
-
     private fun callApi() {
-        Singletons.pokeApi.getPokemonList().enqueue(object : Callback<PokemonListResponse> {
-            override fun onFailure(call: Call<PokemonListResponse>, t: Throwable) {
+        Singletons.catApi.getCatList().enqueue(object : Callback<List<Cat>> {
+            override fun onFailure(call: Call<List<Cat>>, t: Throwable) {
                 //TODO("not implemented")
             }
             //49min
 
             override fun onResponse(
-                call: Call<PokemonListResponse>,
-                response: Response<PokemonListResponse>
+                call: Call<List<Cat>>,
+                response: Response<List<Cat>>
             ) {
                 if (response.isSuccessful && response.body() != null) {
-                    val pokemonResponse = response.body()!!
-                    showList(pokemonResponse.results)
+                    val catResponse = response.body()!!
+                    showList(catResponse)
                 }
             }
         })
     }
 
-    private fun showList (pokeList: List<Pokemon>) {
-        adapter.updateList(pokeList)
+    private fun showList (catList: List<Cat>) {
+        adapter.updateList(catList)
     }
 
-    private fun onClickedPokemon(id: Int) {
-            findNavController().navigate(R.id.navigateToPokemonDetailFragment, bundleOf(
-                "pokemonId" to (id+1)
+    private fun onClickedCat(cat: Cat) {
+            findNavController().navigate(R.id.navigateToCatDetailFragment, bundleOf(
+                "cat-name" to cat.name,
+                "cat-origin" to cat.origin,
+                "cat-life-span" to cat.life_span,
+                "cat-affection-level" to cat.affection_level,
+                "cat-temperament" to cat.temperament,
+                "cat-image" to cat.image.url
             ))
         }
 }

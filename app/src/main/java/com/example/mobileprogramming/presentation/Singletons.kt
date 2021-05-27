@@ -1,7 +1,7 @@
 package com.example.mobileprogramming.presentation
 
-import com.example.mobileprogramming.presentation.PokeApplication.Companion.context
-import com.example.mobileprogramming.presentation.api.PokeApi
+import com.example.mobileprogramming.presentation.CatApplication.Companion.context
+import com.example.mobileprogramming.presentation.api.CatApi
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -17,12 +17,12 @@ class Singletons {
             .cache(cache)
             .build()
 
-        val pokeApi: PokeApi = Retrofit.Builder()
-            .baseUrl( "https://pokeapi.co/api/v2/")
+        val catApi: CatApi = Retrofit.Builder()
+            .baseUrl( "https://api.thecatapi.com/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(okhttpClient)
             .build()
-            .create(PokeApi::class.java)
+            .create(CatApi::class.java)
 
     }
 }

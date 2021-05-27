@@ -3,7 +3,7 @@ package com.example.mobileprogramming.presentation
 import android.app.Application
 import android.content.Context
 
-class PokeApplication : Application(){
+class CatApplication : Application(){
     companion object{
         var context: Context? =null
     }

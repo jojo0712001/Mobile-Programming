@@ -7,23 +7,38 @@
 
     <fragment
         android:id="@+id/PokemonListFragment"
-        android:name="com.example.mobileprogramming.FirstFragment"
+        android:name="com.example.mobileprogramming.presentation.list.CatListFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_pokemon_list">
+        tools:layout="@layout/fragment_cat_list">
 
         <action
-            android:id="@+id/navigateToPokemonDetailFragment"
+            android:id="@+id/navigateToCatDetailFragment"
             app:destination="@id/PokemonDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/PokemonDetailFragment"
-        android:name="com.example.mobileprogramming.presentation.detail.PokemonDetailFragment"
+        android:name="com.example.mobileprogramming.presentation.detail.CatDetailFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_pokemon_detail">
+        tools:layout="@layout/fragment_cat_detail">
         <argument
-            android:name="pokemonId"
-            app:argType="integer"
-             android:defaultValue="-1" />
+            android:name="cat-name"
+            app:argType="string"/>
+        <argument
+            android:name="cat-origin"
+            app:argType="string"/>
+        <argument
+            android:name="cat-life-span"
+            app:argType="string"/>
+        <argument
+            android:name="cat-affection-level"
+            app:argType="int"/>
+        <argument
+            android:name="cat-temperament"
+            app:argType="string"/>
+        <argument
+            android:name="cat-image"
+            app:argType="string" />
+
         <action
             android:id="@+id/navigateToPokemonListFragment"
             app:destination="@id/PokemonListFragment" />
