@@ -1,7 +1,8 @@
 # Mobile-Programming
 
-### Projet scolaire : Application mobile
- Kotlin, API, Retrofit, Cache, RecyclerView, Afficher des chats depuis internet avec le détail, Passer d'un écran à un autre, 
+### Projet scolaire : Application mobile en Kotlin affichant les différents types de chats et le détail pour chacun d'entre eux.
+### Run with *Android Studio*
+Use of an API, Retrofit, Cache, RecyclerView...
 
 <br>
 <h3>Rendu</h3>
