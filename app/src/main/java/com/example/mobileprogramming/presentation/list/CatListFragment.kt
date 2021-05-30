@@ -70,7 +70,7 @@ class CatListFragment : Fragment() {
 
     private fun onClickedCat(cat: Cat) {
             findNavController().navigate(R.id.navigateToCatDetailFragment, bundleOf(
-                "cat-name" to cat.name,
+                "catname" to cat.name,
                 "cat-origin" to cat.origin,
                 "cat-life-span" to cat.life_span,
                 "cat-affection-level" to cat.affection_level,

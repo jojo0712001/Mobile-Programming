@@ -22,5 +22,4 @@
 
     <include layout="@layout/content_main" />
 
-    <include layout="@layout/content_main"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
